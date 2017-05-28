@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Negociações</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body class="container">
+
+<h1 class="center-align">Negociações</h1>
+
+<div class="row">
+    <form class="form" onsubmit="negociacaoController.adiciona(event)">
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="data">Data de Negociação</label>
+                <input data-error="wrong" data-success="right" id="data" type="date" class="datepicker">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="quantidade">Quantidade</label>
+                <input data-error="wrong" data-success="right" id="quantidade" type="number" class="validate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="valor">Valor</label>
+                <input data-error="wrong" data-success="right" id="valor" type="number" class="validate" min="0.01"
+                       step="0.01"/>
+            </div>
+        </div>
+
+        <button class="btn waves-effect waves-light z-depth-2" type="submit" name="action">Incluir
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
+
+<button class="btn btn-primary text-center z-depth-2" type="button">
+    Importar Negociações
+</button>
+<button class="btn btn-primary text-center z-depth-2" type="button">
+    Apagar
+</button>
+<br>
+<br>
+
+<table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>DATA</th>
+        <th>QUANTIDADE</th>
+        <th>VALOR</th>
+        <th>VOLUME</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    </tbody>
+
+    <tfoot>
+    </tfoot>
+</table>
+
+<script src="js/app/models/Negociacao.js"></script>
+<script src="js/app/controllers/NegociacaoController.js"></script>
+<script>
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+    let negociacaoController = new NegociacaoController();
+</script>
+
+</body>
+
+</html>
